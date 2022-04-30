@@ -1,27 +1,12 @@
 import girlImg from '../../assets/images/avatar.svg';
-import logoImg from '../../assets/images/logo.svg';
 import { Button } from '../../components/Button';
 import './styles.scss';
 
-
 export function Home () {
+
+  
   return (
     <div className="home">
-      <header>
-        <nav>
-          <div>
-            <img src={logoImg} alt="devblog" />
-          </div>
-          <ul>
-            <li><a href="">Home</a></li>
-            <li><a href="">Posts</a></li>
-            <button>
-              Login
-            </button>
-          </ul>
-        </nav>
-      </header>
-
       <main>
         <div className="main-container">
           <div className="home-text">
