@@ -1,0 +1,33 @@
+.create-post-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 10rem);
+  form {
+    width: 35rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    input {
+      width: 100%;
+      padding: 1rem 2rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    textarea {
+      padding: 1rem 2rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      resize: vertical;
+
+      min-height: 15rem;
+      margin-bottom: 2rem;
+    }
+  }
+}

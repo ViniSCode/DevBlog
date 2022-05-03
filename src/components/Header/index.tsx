@@ -1,11 +1,11 @@
-import { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import logoImg from '../../assets/images/logo.svg';
-import { AuthContext } from '../../contexts/AuthContext';
+import { useAuth } from '../../hooks/useAuth';
 import './styles.scss';
 
 
 export function Header () {
-  const {user, handleSignInWithGoogle} = useContext(AuthContext);
+  const {user, handleSignInWithGoogle} = useAuth();
 
  return ( 
   <header>
@@ -14,8 +14,8 @@ export function Header () {
           <img src={logoImg} alt="devblog" />
         </div>
         <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/posts">Posts</a></li>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/posts">Posts</Link></li>
           { 
             user ? 
             <button 
