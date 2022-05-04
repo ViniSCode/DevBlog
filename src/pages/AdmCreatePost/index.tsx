@@ -25,8 +25,11 @@ export function AdminCreatePosts () {
     await database.ref(`posts/`).push({
       title: title,
       text: textContent,
-      authorId: user?.id,
-      avatar: user?.avatar,
+      user: {
+        authorId: user?.id,
+        avatar: user?.avatar,
+        name: user?.name,
+      },
       createdAt: new Date(),
     });
 

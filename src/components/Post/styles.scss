@@ -1,0 +1,36 @@
+.post-container {
+  width: 70%;
+  margin: 0 auto;
+  padding: 3rem;
+  border: 1px solid #B0B0B0;
+
+  .user-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+
+    img {
+      border-radius: 50%;
+      width: 32px;
+      margin-right: 5px;
+    }
+
+    p {
+      font-size: 16px;
+      font-weight: 500;
+      color: #333;
+    }
+  }
+
+  button {
+    margin-top: 1.688rem;
+    background: #FF6D5F;
+    color: white;
+    padding: .5rem 3rem;
+    border: none;
+    border-radius: 9999px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+
+}

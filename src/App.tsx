@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import { Header } from "./components/Header";
 import { AuthProvider } from "./contexts/AuthContext";
 import { AdminCreatePosts } from "./pages/AdmCreatePost";
@@ -9,6 +10,7 @@ export function App() {
   return (
     <AuthProvider>
       <BrowserRouter >
+      <ToastContainer/>
       <Header />
         <Routes>
           <Route path="/" element={<Home />} />
