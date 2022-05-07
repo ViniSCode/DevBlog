@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import girlImg from '../../assets/images/avatar.svg';
 import { Button } from '../../components/Button';
 import './styles.scss';
@@ -17,7 +18,9 @@ export function Home () {
               <li>Share something.</li>
               <li>Enjoy All for free.</li>
             </ul>
-            <Button>All Posts</Button>
+            <Link to="/posts">
+              <Button>All Posts</Button>
+            </Link>
           </div>
 
           <div>

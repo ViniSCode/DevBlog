@@ -1,13 +1,13 @@
 .posts-container {
-  // padding: 0 2rem;
-  // max-width: 1120px;
-  // margin: 0 auto;
+  padding: 0 2rem;
+  max-width: 1120px;
+  margin: 0 auto;
 
-  // display: flex; 
-  // flex-direction: column;
-  // align-items: center;
-  // justify-content: center;
-  // flex-wrap: wrap;
+  display: flex; 
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
 
   .post-container {
     margin-top: 2rem;
@@ -16,4 +16,34 @@
       margin-bottom: 2rem;
     }
   }
+}
+
+
+.paginationBtn {
+  margin: 0 auto;
+  width: 80%;
+  height: 40px;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+
+.paginationBtn a{
+  padding: 10px;
+  margin: 8px;
+  border-radius: 5px;
+  border: 1px solid #459BFF;
+  color: #459BFF;
+  cursor: pointer;
+  transition: all .2s;
+
+  &:hover {
+    color: white;
+    background-color: #459BFF;
+  }
+}
+
+.activeBtn a{
+  color: white;
+  background-color: #459BFF;
 }

@@ -1,7 +1,14 @@
 import { useEffect, useState } from "react";
+import ReactPaginate from "react-paginate";
 import { Post } from "../../components/Post";
 import { database } from "../../services/firebase";
 import './styles.scss';
+
+type changePage = {
+  event: {
+    selected: number;
+  }
+}
 
 type FirebasePosts = Record<string, { 
   text: string;
@@ -26,6 +33,29 @@ type PostsType = {
 
 export function Posts () {
   const [posts, setPosts] = useState<PostsType[]>([]);
+  const [pageNumber, setPageNumber] = useState(0);
+
+  const postsPerPage = 5;
+  const pagesVisited = pageNumber * postsPerPage;
+
+  const displayPosts = posts.slice(pagesVisited, pagesVisited + postsPerPage)
+  .map((post) => {
+    return(
+      <Post 
+        key={post.id}
+        postId={post.id}
+        text={post.text}
+        title={post.title}
+        user={post.user}
+      />
+    )
+  });
+
+  const pageCount = Math.ceil(posts.length / postsPerPage);
+  const changePage = ({selected}: { selected: number }) => {
+    setPageNumber(selected);
+  };
+
 
   useEffect( () => {
     const postRef = database.ref("posts");
@@ -56,20 +86,21 @@ export function Posts () {
   }, [])
   
   return (
-    <div className="posts-container">
-    {
-      posts.map(post => {
-        return(
-          <Post 
-          key={post.id}
-          postId={post.id}
-          text={post.text}
-          title={post.title}
-          user={post.user}
-        />
-        )
-      })
-    }
-    </div>
+    <>
+      <div className="posts-container">
+      { displayPosts }
+      </div>
+
+      <ReactPaginate 
+        previousLabel={"Previous"}
+        nextLabel={"Next"}
+        pageCount={pageCount}
+        onPageChange={changePage}
+        containerClassName={"paginationBtn"}
+        previousLinkClassName={"previousBtn"}
+        nextLinkClassName={"nextBtn"}
+        activeClassName={"activeBtn"}
+      />
+    </>
   );
 }
