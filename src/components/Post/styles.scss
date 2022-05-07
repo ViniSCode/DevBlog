@@ -1,8 +1,36 @@
 .post-container {
   width: 70%;
   margin: 0 auto;
-  padding: 3rem;
+  padding: 2rem 3rem;
+  border-radius: 10px;
   border: 1px solid #B0B0B0;
+
+  transition: box-shadow .5s;
+  box-shadow: 2px 4px 10px 0px rgba(0,0,0,0.13);
+
+  &:hover {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+  }
+
+  .post {
+    max-width: 95%;
+    
+    h2 {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden; 
+    }
+
+    p {
+      margin-top: 1rem;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+    }
+  }
 
   .user-info {
     display: flex;
@@ -30,7 +58,12 @@
     border: none;
     border-radius: 9999px;
     font-size: 1rem;
+    transition: filter .2s;
     cursor: pointer;
+
+    &:hover {
+      filter: brightness(0.9);
+    }
   }
 
 }

@@ -16,6 +16,7 @@ export function Header () {
         <ul>
           <li><Link to="/">Home</Link></li>
           <li><Link to="/posts">Posts</Link></li>
+          {user && <li><Link to="/posts/create">Create Post</Link></li>}
           { 
             user ? 
             <button 

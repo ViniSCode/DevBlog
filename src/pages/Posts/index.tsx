@@ -13,7 +13,7 @@ type FirebasePosts = Record<string, {
   }
 }>
 
-type Posts = {
+type PostsType = {
   id: string;
   text: string;
   title: string;
@@ -25,7 +25,7 @@ type Posts = {
 }
 
 export function Posts () {
-  const [posts, setPosts] = useState<Posts[]>([]);
+  const [posts, setPosts] = useState<PostsType[]>([]);
 
   useEffect( () => {
     const postRef = database.ref("posts");
@@ -46,7 +46,7 @@ export function Posts () {
         }
       });
 
-      setPosts(parsedPost);
+      setPosts(parsedPost.reverse());
     })
 
     return () => {

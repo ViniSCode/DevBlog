@@ -1,18 +1,27 @@
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { Button } from "../../components/Button";
 import { useAuth } from "../../hooks/useAuth";
 import { database } from "../../services/firebase";
 import "./styles.scss";
 
-export function AdminCreatePosts () {
-  const { user } = useAuth();
+export function CreatePosts () {
+  const { user, handleSignInWithGoogle } = useAuth();
 
   const [title, setTitle] = useState("");
   const [textContent, setTextContent] = useState("");
-  const [admin, setAdmin] = useState("");
+  let navigate = useNavigate();
 
   async function handleCreatePost(event: FormEvent) {
     event.preventDefault();
+
+    if (!user) {
+      toast.warning("You need to be logged in to create a post");
+      handleSignInWithGoogle();
+
+      return;
+    }
 
     if (title.trim() === "") {
       return;
@@ -35,20 +44,9 @@ export function AdminCreatePosts () {
 
     setTextContent("");
     setTitle("");
+    navigate("/posts");
   }
-
-  
-  useEffect( () => {
-    const fetchData = async () => {
-      const { adminId } = await (await (database.ref(`admin`).get())).val();
-      setAdmin(adminId);
-    }
-        
-    fetchData();
-  }, []);
-  
-
-  return admin === user?.id ? (
+  return (
     <div className="create-post-container">
       <h1>Create a post</h1>
       <form>
@@ -66,7 +64,5 @@ export function AdminCreatePosts () {
         <Button type="submit" onClick={handleCreatePost}>Create</Button>
       </form>
     </div>
-  ) : (
-    <h1>You don't have permission to access this page</h1>
-  );
+  )
 }
