@@ -34,29 +34,7 @@ type PostsType = {
 export function Posts () {
   const [posts, setPosts] = useState<PostsType[]>([]);
   const [pageNumber, setPageNumber] = useState(0);
-
-  const postsPerPage = 5;
-  const pagesVisited = pageNumber * postsPerPage;
-
-  const displayPosts = posts.slice(pagesVisited, pagesVisited + postsPerPage)
-  .map((post) => {
-    return(
-      <Post 
-        key={post.id}
-        postId={post.id}
-        text={post.text}
-        title={post.title}
-        user={post.user}
-      />
-    )
-  });
-
-  const pageCount = Math.ceil(posts.length / postsPerPage);
-  const changePage = ({selected}: { selected: number }) => {
-    setPageNumber(selected);
-  };
-
-
+  
   useEffect( () => {
     const postRef = database.ref("posts");
 
@@ -84,7 +62,28 @@ export function Posts () {
     }
    
   }, [])
-  
+
+  const postsPerPage = 5;
+  const pagesVisited = pageNumber * postsPerPage;
+
+  const displayPosts = posts.slice(pagesVisited, pagesVisited + postsPerPage)
+  .map((post) => {
+    return(
+      <Post 
+        key={post.id}
+        postId={post.id}
+        text={post.text}
+        title={post.title}
+        user={post.user}
+      />
+    )
+  });
+
+  const pageCount = Math.ceil(posts.length / postsPerPage);
+  const changePage = ({selected}: { selected: number }) => {
+    setPageNumber(selected);
+  };
+
   return (
     <>
       <div className="posts-container">
@@ -92,7 +91,7 @@ export function Posts () {
       </div>
 
       <ReactPaginate 
-        previousLabel={"Previous"}
+        previousLabel={"Prev"}
         nextLabel={"Next"}
         pageCount={pageCount}
         onPageChange={changePage}
