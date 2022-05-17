@@ -2,24 +2,11 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { database } from "../../services/firebase";
 
-type RoomParams = {
-  id: string;
-}
-
-type Post = {
-  text: string;
-  title: string;
-  user: {
-    authorId: string;
-    avatar: string;
-    name: string;
-  }
-}
 
 export function ReadPost () {
-  const params = useParams<RoomParams>();
+  const params = useParams();
   const postId = params.id;
-  const [post, setPost] = useState<Post>();
+  const [post, setPost] = useState();
 
   useEffect( () => {
     const fetchPost = async () => {

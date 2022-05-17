@@ -1,4 +1,5 @@
-import { FormEvent, useState } from "react";
+import { EditorState } from 'draft-js';
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Button } from "../../components/Button";
@@ -6,14 +7,18 @@ import { useAuth } from "../../hooks/useAuth";
 import { database } from "../../services/firebase";
 import "./styles.scss";
 
-export function CreatePosts () {
-  const { user, handleSignInWithGoogle } = useAuth();
 
+
+export function CreatePosts () {
+  const state = EditorState;
+
+  const { user, handleSignInWithGoogle } = useAuth();
   const [title, setTitle] = useState("");
   const [textContent, setTextContent] = useState("");
+
   let navigate = useNavigate();
 
-  async function handleCreatePost(event: FormEvent) {
+  async function handleCreatePost(event) {
     event.preventDefault();
 
     if (!user) {
@@ -46,6 +51,7 @@ export function CreatePosts () {
     setTitle("");
     navigate("/posts");
   }
+
   return (
     <div className="create-post-container">
       <h1>Create a post</h1>
@@ -56,12 +62,12 @@ export function CreatePosts () {
           onChange={(event) => setTitle(event.target.value)}
           value={title}  
         />
-        <textarea 
-          placeholder="Post..." 
-          onChange={(event) => setTextContent(event.target.value)}
-          value={textContent}  
-        />
+        <div id="text-editor-container">
+        </div>
+      <div className="actions">
+        <Button type="button" onClick={() => navigate("/")}>Cancel</Button>
         <Button type="submit" onClick={handleCreatePost}>Create</Button>
+      </div>
       </form>
     </div>
   )

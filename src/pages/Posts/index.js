@@ -1,0 +1,64 @@
+import * as prismic from '@prismicio/client';
+import { RichText } from "prismic-dom";
+import { useEffect, useState } from "react";
+import { getPrismicClient } from './../../services/prismic';
+import './styles.scss';
+
+
+export function Posts () {
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    const getPostFromPrismic  = async () => {
+      const client = getPrismicClient();
+  
+      const response = await client.get(
+       [ prismic.predicate.at('document.type', 'Post')],
+       {
+         fetch: ['Post.title', 'Post.content'],
+         pageSize: 5,
+       }
+      );
+
+      const formattedPosts = response.results.map(post => {
+        return {
+          slug: post.uid,
+          title: RichText.asText(post.data.title),
+          text: post.data.content.find(content => content.type === 'paragraph')?.text ?? "",
+          updatedAt: new Date(post.last_publication_date).toLocaleDateString('pt-BR', {
+            day: '2-digit',
+            month: 'long',
+            year: 'numeric'
+          })
+        }
+      })
+      
+  
+      setPosts(formattedPosts);
+    }
+    
+    getPostFromPrismic();
+
+  }, [])
+  
+  const displayPosts = posts
+  .map((post) => {
+
+    console.log(post)
+    return(
+      <a key={post.slug} href="#">
+        <time>{post.updatedAt}</time>
+        <strong>{post.title}</strong>
+        <p>{post.text}</p>
+      </a>
+    )
+  });
+
+  return (
+    <div className="posts-container">
+      <div className="posts">
+      { displayPosts }
+      </div>
+    </div>
+  );
+}

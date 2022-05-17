@@ -1,0 +1,77 @@
+.header {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 2rem;
+
+  .loginBtn {
+    color: #ffff;
+    background: #459BFF;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    transition: filter 0.2s;
+
+    &:hover {
+      filter: brightness(0.9);
+    }
+  }
+  
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .ul {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style-type: none;
+      
+      a {
+        display: inline-block;
+        position: relative;
+  
+        padding: 0 0.5rem;
+        height: 5rem;
+        line-height: 5rem;
+        color: black;
+        transition: color .2s;
+
+        &:active{
+          color: var(--primary);
+          font-weight: bold;
+        }
+
+        &.active::after{
+          content: "";
+          height: 3px;
+          border-radius: 3px 3px 0 0;
+          width: 100%;
+          position: absolute;
+          bottom: 10px;
+          left: 0;
+          background: var(--primary);
+        }
+      }
+
+      > .username {
+        padding: 0.5rem 2rem;
+        border-radius: 9999px;
+        background: var(--primary);
+        color: white;
+        border: none;
+
+        display: flex;
+        align-items: center;
+      }
+
+      .close-icon {
+        margin-left: 1rem;
+        width: 20px;
+        height: 20px;
+      }
+
+    }
+  }
+}
