@@ -4,8 +4,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Header } from "./components/Header";
 import { AuthProvider } from "./contexts/AuthContext";
 import { Home } from "./pages/Home";
+import { Post } from './pages/Post';
 import { Posts } from "./pages/Posts";
-import { ReadPost } from './pages/ReadPost/index';
 
 export function App() {
   return (
@@ -16,7 +16,7 @@ export function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/posts" element={<Posts />} />
-          <Route path="/posts/:id" element={<ReadPost />} />
+          <Route path="/posts/:id" element={<Post />} />
         </Routes>
       </BrowserRouter>
     </AuthProvider>

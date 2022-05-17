@@ -13,10 +13,10 @@ export function Home () {
           <div className="home-text">
             <h1>Dev Blog <br/> All in one place</h1>
             <ul className="home-list">
+              <li>Technology news.</li>
               <li>Learn something.</li>
-              <li>Teach something.</li>
               <li>Share something.</li>
-              <li>Enjoy All for free.</li>
+              <li>All for free.</li>
             </ul>
             <Link to="/posts">
               <Button>All Posts</Button>

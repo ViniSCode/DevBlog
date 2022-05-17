@@ -1,6 +1,8 @@
 import * as prismic from '@prismicio/client';
 import { RichText } from "prismic-dom";
 import { useEffect, useState } from "react";
+import { Link } from 'react-router-dom';
+import { Loading } from './../../components/Loading/index';
 import { getPrismicClient } from './../../services/prismic';
 import './styles.scss';
 
@@ -9,11 +11,11 @@ export function Posts () {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    const getPostFromPrismic  = async () => {
+    const getPostsFromPrismic  = async () => {
       const client = getPrismicClient();
   
       const response = await client.get(
-       [ prismic.predicate.at('document.type', 'Post')],
+       [ prismic.predicate.at('document.type', 'post')],
        {
          fetch: ['Post.title', 'Post.content'],
          pageSize: 5,
@@ -37,27 +39,26 @@ export function Posts () {
       setPosts(formattedPosts);
     }
     
-    getPostFromPrismic();
+    getPostsFromPrismic();
 
   }, [])
   
   const displayPosts = posts
   .map((post) => {
 
-    console.log(post)
     return(
-      <a key={post.slug} href="#">
+      <Link to={`/posts/${post.slug}`} key={post.slug}>
         <time>{post.updatedAt}</time>
         <strong>{post.title}</strong>
         <p>{post.text}</p>
-      </a>
+      </Link>
     )
   });
 
   return (
     <div className="posts-container">
       <div className="posts">
-      { displayPosts }
+      { !displayPosts ? <Loading /> : displayPosts}
       </div>
     </div>
   );
