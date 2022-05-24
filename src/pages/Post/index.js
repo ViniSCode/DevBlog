@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { database } from '../../services/firebase';
 import { Button } from './../../components/Button/index';
+import { Comments } from './../../components/Comments/index';
 import { Loading } from './../../components/Loading/index';
 import { useAuth } from './../../hooks/useAuth';
 import { getPrismicClient } from './../../services/prismic';
@@ -13,13 +14,13 @@ export function Post () {
   const slug = params.id;
   const [post, setPost] = useState();
   const { user, handleSignInWithGoogle} = useAuth();
-  const [newComment, setNewComment] = useState();
+  const [newComment, setNewComment] = useState("");
   const databaseSlug = slug.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"");
   
   //get post by UID - slug
   useEffect(() => {
     const getPostsFromPrismic  = async () => {
-      const client = await getPrismicClient();
+      const client = getPrismicClient();
       const response = await client.getByUID('post', String(slug), {});
       const formattedPosts = {
         slug,
@@ -33,13 +34,10 @@ export function Post () {
         })
       }
       
-      
       setPost(formattedPosts);
     }
 
-
     getPostsFromPrismic()
-    
   }, []);
 
   async function handleSendComment (event) {
@@ -79,34 +77,34 @@ export function Post () {
             dangerouslySetInnerHTML={{ __html: post.content }} 
           />
           </article>
-        </>
-      )}
 
-      <div className="addComment">
-      <form onSubmit={handleSendComment}>
-          <textarea 
-            placeholder="Comment something here..."
-            onChange={event => setNewComment(event.target.value)}
-            value={newComment}
-          />
+          <div className="addComment">
+            <form onSubmit={handleSendComment}>
+            <textarea 
+              placeholder="Comment something here..."
+              onChange={event => setNewComment(event.target.value)}
+              value={newComment}
+            />
 
-          <div className={styles.formFooter}>
-            { user ? (
+            <div className={styles.formFooter}>
+              { user ? (
               <>
                 <div className={styles.userInfo}>
                   <img src={user?.avatar} alt={user.name}/>
                   <span>{user.name}</span>
-                </div>
-                <Button type="submit">Comment</Button>
-              </>
-            ) : (<span>Para enviar uma pergunta, <button type="button" onClick={handleSignInWithGoogle}>faça seu login</button>.</span>)}
-          </div>
-        </form>
+                  </div>
+                  <Button type="submit">Comment</Button>
+                </>
+              ) : (<span>Para enviar uma pergunta, <button type="button" onClick={handleSignInWithGoogle}>faça seu login</button>.</span>)}
+            </div>
+            </form>
 
-        <div className="comments">
-            {/* <Comments slug={slug}/> */}
+            <div className="comments">
+              <Comments slug={slug}/>
+            </div>
           </div>
-      </div>
+        </>
+      )}
     </div>
   )
 }
