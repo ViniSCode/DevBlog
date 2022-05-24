@@ -8,7 +8,7 @@
   max-width: 80%;
   margin: 5rem auto 0;
 
-  img {
+ > img {
     margin-top: 1rem;
     max-width: 100%;
     border-radius: 5px;
@@ -45,4 +45,69 @@
     }
   }
   
+}
+
+form {
+  max-width: 85%;
+  padding: 0 2rem;
+  margin: 5rem auto;
+
+  button[type="submit"] {
+    color: white;
+    background-color: var(--primary);
+    border-radius: 8px;
+    padding: 1rem 3rem;
+  }
+
+  textarea{
+    width: 100%;
+    border: 0;
+    padding: 16px;
+    border-radius: 8px;
+    background: #fefefe;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    resize: vertical;
+    min-height: 130px;
+  }
+
+  .formFooter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 16px;
+
+    .userInfo {
+      display: flex;
+      align-items: center;
+      
+      > img {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+      }
+
+      span {
+        margin-left: 8px;
+        color: #29292e;
+        font-weight: 500;
+        font-size: 15px;
+      }
+    }
+    
+    > span {
+      font-size: 14px;
+      color: #737380;
+      font-weight: 500;
+
+      button {
+        background: transparent;
+        border: 0;
+        color: #835AFD;
+        text-decoration: underline;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+      }
+    }
+  }
 }
