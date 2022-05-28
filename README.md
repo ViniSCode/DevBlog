@@ -5,37 +5,35 @@
 
 ## Technologies 
 - [x] ReactJS
-- [x] Typescript
-- [x] Sass
-- [x] Firebase,  Firebase Auth, Real Time Database
+- [x] Firebase, Firebase Auth, Real Time Database
+- [x] Prismic CMS
 - [x] react-paginate
+- [x] react-toastify
+- [x] Sass
 
 ## Tasks
 - [x] "Home" Page
 - [x] "Posts" Page
-- [x] "Admin" Page
+- [x] "Admin" Page at Prismic
 - [x] "Create Post" Page
 - [x] Header Component
-- [] Post page (Read More)
-<!-- - [] Footer Component -->
+- [x] Post page (Read More)
 - [x] Post Component
 - [x] Button Component
-- [] Loading (Spinner) component 
+- [x] Loading (Spinner) component 
 
 ## Regras de negócio
 
 ### user
 - [x] User can login with google
 - [x] User can read posts
-- [x] User can create a posts
-- [] User can comment on posts
-- [] User can like any post
-- [] User can only edit and delete their own posts
-- [] User can't interact with posts (create, like, comment) if logged out
-- [] User can't access admin page
+- [x] User can comment on posts
+- [x] User can like any post
+- [x] User can't delete comments
+- [x] User can't interact with posts (like, comment) if logged out
 
 ### Admin
-- [] Admin can create posts
-- [] Admin can edit posts
-- [] Admin can delete post
-- [] Admin can access admin page
+- [x] Admin can create posts
+- [x] Admin can edit posts
+- [x] Admin can delete posts
+- [x] Admin create posts at prismic.io CMS
