@@ -1,15 +1,27 @@
 .comment {
-  background: #fefefe;
+  max-width: 80%;
+  margin: 0 auto;
+
+  background: #fdfdfd;
   border-radius: 8px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.123);
   padding: 24px;
 
   & + .comment {
-    margin-top: 8px;
+    margin-top: 1rem;
   }
 
   p {
     color: #29292e;
+  }
+
+
+  button.liked {
+    color: #459BFF;
+
+    svg path {
+      stroke: #459BFF;
+    }
   }
 
   footer {
@@ -57,10 +69,10 @@
         }
 
         &.liked {
-          color: #835afd;
+          color: #459BFF;
 
           svg path {
-            stroke: #835afd;
+            stroke: #459BFF;
           }
         }
       }

@@ -1,6 +1,7 @@
 import { RichText } from 'prismic-dom';
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { toast } from 'react-toastify';
 import { database } from '../../services/firebase';
 import { Button } from './../../components/Button/index';
 import { Comments } from './../../components/Comments/index';
@@ -15,7 +16,7 @@ export function Post () {
   const [post, setPost] = useState();
   const { user, handleSignInWithGoogle} = useAuth();
   const [newComment, setNewComment] = useState("");
-  const databaseSlug = slug.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"");
+  const databaseSlug = slug.replace(/[.,#!$%^&*;:{}=\-_`~()]/g,"");
   
   //get post by UID - slug
   useEffect(() => {
@@ -48,7 +49,7 @@ export function Post () {
     }
 
     if (!user) {
-      alert("You must be logged in to send a comment");
+      toast.error("You must be logged in to send a comment");
       throw new Error("You must be logged in");
     }
     
@@ -71,7 +72,7 @@ export function Post () {
           <article className={styles.post}>
             <h1>{post.title}</h1>
             <time>{post.updatedAt}</time>
-            {post.image && <img src={post.image} />}
+            {post.image && <img src={post.image} alt=""/>}
             <div 
             className={styles.postContent}
             dangerouslySetInnerHTML={{ __html: post.content }} 
@@ -84,6 +85,7 @@ export function Post () {
               placeholder="Comment something here..."
               onChange={event => setNewComment(event.target.value)}
               value={newComment}
+              maxLength="360"
             />
 
             <div className={styles.formFooter}>
@@ -98,11 +100,10 @@ export function Post () {
               ) : (<span>Para enviar uma pergunta, <button type="button" onClick={handleSignInWithGoogle}>faça seu login</button>.</span>)}
             </div>
             </form>
-
+          </div>
             <div className="comments">
               <Comments slug={slug}/>
             </div>
-          </div>
         </>
       )}
     </div>
