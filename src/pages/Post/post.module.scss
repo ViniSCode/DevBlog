@@ -7,6 +7,11 @@
 .post {
   max-width: 80%;
   margin: 5rem auto 0;
+  
+  @media (max-width: 600px) {
+    max-width: 95%;
+    margin: 2rem auto 0;
+  }
 
  > img {
     margin-top: 1rem;
@@ -17,6 +22,10 @@
   h1 {
     font-size: 3.5rem;
     font-weight: 900;
+
+    @media (max-width: 600px) {
+      font-size: 3rem;
+    }  
   }
 
   time {
@@ -51,6 +60,11 @@ form {
   max-width: 85%;
   padding: 0 2rem;
   margin: 5rem auto;
+
+  @media (max-width: 600px) {
+    max-width: 95%;
+    padding: 0rem;
+  }
 
   button[type="submit"] {
     color: white;
