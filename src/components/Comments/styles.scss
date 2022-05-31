@@ -49,6 +49,13 @@
         margin-left: 8px;
         color: #737380;
         font-size: 15px;
+
+        @media (max-width: 344px) {
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          width: 89px;
+        }
       }
     }
 
