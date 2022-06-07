@@ -5,7 +5,7 @@ export const AuthContext = createContext({});
 
 export function AuthProvider (props) {
 
-  const [user, setUser] = useState();
+  const [user, setUser] = useState({});
 
   useEffect( () => {
     const unsubscribe = auth.onAuthStateChanged( user => {
@@ -54,8 +54,9 @@ export function AuthProvider (props) {
     }
   }
 
+  
   return (
-    <AuthContext.Provider value={{user, handleSignInWithGoogle}}>
+    <AuthContext.Provider value={{ user, handleSignInWithGoogle }}>
       {props.children}
     </AuthContext.Provider>
   );

@@ -11,14 +11,16 @@
 - [x] react-toastify
 - [x] Sass
 
-## Tasks
+## ToDo
 - [x] "Home" Page
 - [x] "Posts" Page
 - [x] "Admin" Page at Prismic
 - [x] "Create Post" Page
+- [x] "Post" page (Read Post)
+- [x] useAuth hook, Auth Context
+- [x] Firebase, Prismic CMS
+- [x] Comments Component
 - [x] Header Component
-- [x] Post page (Read More)
-- [x] Post Component
 - [x] Button Component
 - [x] Loading (Spinner) component 
 

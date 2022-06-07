@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { AiOutlineLogin } from 'react-icons/ai';
 import { BiHome, BiNews } from 'react-icons/bi';
-import { FiLogOut } from 'react-icons/fi';
 import { HiMenuAlt1 } from 'react-icons/hi';
 import { IoClose } from 'react-icons/io5';
 import { Link, useLocation } from 'react-router-dom';
@@ -49,22 +48,12 @@ export function Header () {
             
             { 
               user ? (
-                !isMenuActive ? (
                   <button 
                     className="username"
                   >
                     {user.name}
                   </button>   
-                ) :
-                (
-                    <button 
-                      className="logOut"
-                    >
-                      <FiLogOut className="logoutIcon"/>
-                      Logout
-                  </button>   
                 )
-              )
               :
               (
                 isMenuActive ? (
