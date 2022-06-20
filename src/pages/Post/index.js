@@ -13,7 +13,7 @@ import styles from './post.module.scss';
 export function Post () {
   const params = useParams();
   const slug = params.id;
-  const [post, setPost] = useState();
+  const [post, setPost] = useState("");
   const { user, handleSignInWithGoogle} = useAuth();
   const [newComment, setNewComment] = useState("");
   const databaseSlug = slug.replace(/[.,#!$%^&*;:{}=\-_`~()]/g,"");
@@ -101,7 +101,7 @@ export function Post () {
             </div>
             </form>
           </div>
-            <div className="comments">
+            <div className={styles.comments}>
               <Comments slug={slug}/>
             </div>
         </>
