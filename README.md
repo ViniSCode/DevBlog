@@ -39,3 +39,14 @@
 - [x] Admin can edit posts
 - [x] Admin can delete posts
 - [x] Admin create posts at prismic.io CMS
+
+# Layout
+### Home
+![enter image description here](https://github.com/ViniSCode/DevBlog/blob/main/public/home.png?raw=true)
+### All Posts
+![enter image description here](https://github.com/ViniSCode/DevBlog/blob/main/public/postsPage.png?raw=true)
+### Post 
+![enter image description here](https://github.com/ViniSCode/DevBlog/blob/main/public/post.png?raw=true)
+### Comments section
+![enter image description here](https://github.com/ViniSCode/DevBlog/blob/main/public/comments.png?raw=true)
+
