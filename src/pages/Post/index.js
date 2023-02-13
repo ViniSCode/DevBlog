@@ -66,7 +66,7 @@ export function Post () {
 
   return (
     <div className={styles.container}>
-      {!post ? <Loading/>: 
+      {!post ? <Loading/> : 
       (
         <>
           <article className={styles.post}>
