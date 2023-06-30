@@ -1,83 +1,62 @@
-import { useState } from 'react';
-import { AiOutlineLogin } from 'react-icons/ai';
-import { BiHome, BiNews } from 'react-icons/bi';
-import { HiMenuAlt1 } from 'react-icons/hi';
-import { IoClose } from 'react-icons/io5';
-import { Link, useLocation } from 'react-router-dom';
-import logoImg from '../../assets/images/logo.svg';
-import { useAuth } from '../../hooks/useAuth';
-import './styles.scss';
-export function Header () {
-  const {user, handleSignInWithGoogle} = useAuth();
-  const {pathname} = useLocation();  
+import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { useAuth } from "../../hooks/useAuth";
+
+import "./styles.scss";
+export function Header() {
+  const { user, handleSignInWithGoogle, handleSignOut } = useAuth();
+  const { pathname } = useLocation();
   const [isMenuActive, setIsMenuActive] = useState(false);
 
-  function handleOpenMenu() {
-    setIsMenuActive(!isMenuActive);
-    document.body.style.overflowY = "hidden";
+  async function handleLogOut() {
+    await handleSignOut();
+    window.location.reload();
   }
 
-  function handleCloseMenu () {
-    setIsMenuActive(false);
-    document.body.style.overflowY = "auto";
-  }
-
- return ( 
-  <header className="header">
+  return (
+    <header className="header">
       <nav className="nav">
         <div className="logoImg">
-          <Link to="/">
-            <img src={logoImg} alt="devblog" />
-          </Link>
+          {user ? (
+            <div className="userContainer" onClick={handleLogOut}>
+              <img
+                src={user.avatar}
+                alt="user image"
+                referrerPolicy="no-referrer"
+                className="userImage"
+              />
+              <span className="username">Logout</span>
+            </div>
+          ) : (
+            <button onClick={handleSignInWithGoogle} className="loginBtn">
+              Login
+            </button>
+          )}
         </div>
-        
-        <div className={"menu " + (isMenuActive ? "active" : "")}>
-          
-          <ul className={"ul " + (isMenuActive ? "active" : "")}>
-            <li className="li" onClick={handleCloseMenu}>
-              <Link to="/" className={pathname === "/" ? "active" : ''}>
-              {isMenuActive && <BiHome className='homeIcon'/>}
-              Home
-            </Link></li>
 
-            <li className="li" onClick={handleCloseMenu}>
-              <Link to="/posts" className={pathname === "/posts" ? "active" : ''}>
-              {isMenuActive && <BiNews className='newsIcon'/>}
-              Posts
-            </Link></li>
-            
-            { 
-              user ? (
-                  <button 
-                    className="username"
-                  >
-                    {user.name}
-                  </button>   
-                )
-              :
-              (
-                isMenuActive ? (
-                  <button onClick={handleSignInWithGoogle} className="loginBtn">
-                    <AiOutlineLogin className="loginIcon"/>
-                    Login 
-                  </button>
-                ) : 
-                (
-                  <button onClick={handleSignInWithGoogle} className="loginBtn">
-                    Login 
-                  </button>
-                )
-              )
-            }         
+        <div className="menu">
+          <ul className="ul">
+            <li className="li">
+              <Link to="/" className={pathname === "/" ? "active" : ""}>
+                Home
+              </Link>
+            </li>
+
+            <li className="li">
+              <Link
+                to="/posts"
+                className={
+                  pathname === "/posts"
+                    ? "active"
+                    : pathname.slice(0, 6) === "/posts"
+                    ? "active"
+                    : ""
+                }
+              >
+                Posts
+              </Link>
+            </li>
           </ul>
-        </div>
-
-        <div className="mobileMenuContainer">
-          <HiMenuAlt1 className={"menuIcon " + (isMenuActive ? "active" : "")} onClick={handleOpenMenu}/> 
-          { 
-             isMenuActive &&
-            <IoClose className={"closeMenuIcon " + (isMenuActive ? "active" : "")}  onClick={handleCloseMenu}/> 
-          } 
         </div>
       </nav>
     </header>

@@ -1,17 +1,22 @@
 .home {
-  max-width: 1120px;
+  max-width: 1280px;
   margin: 0 auto;
   padding: 0 2rem;
 
-  main {
-    height: calc(100vh - 10rem);
+  .ellipse-container {
+    width: 100%;
+    max-width: 1000px;
+  }
+
+  .hero {
+    height: calc(100vh - 7rem);
     display: flex;
     align-items: center;
     justify-content: center;
 
     @media (max-width: 891px) {
       height: initial;
-      margin-top: 2rem;
+      margin-top: 10rem;
     }
 
     .main-container {
@@ -29,11 +34,10 @@
           display: flex;
           align-items: center;
           justify-content: center;
-          
+
           h1 {
             text-align: center;
           }
-
         }
 
         h1 {
@@ -41,7 +45,7 @@
           line-height: 4.5rem;
           font-weight: bold;
           margin-top: 2.5rem;
-          
+
           @media (max-width: 1014px) {
             font-size: 3.4rem;
           }
@@ -52,26 +56,26 @@
 
           @media (max-width: 480px) {
             font-size: 3.5rem;
-          }  
+          }
 
           @media (max-width: 364px) {
             font-size: 3.2rem;
             word-spacing: -2px;
-          }    
+          }
         }
-        
+
         ul li {
           list-style-type: circle;
           font-size: 1.5rem;
           line-height: 2.25rem;
-          margin-top: .2rem;
+          margin-top: 0.2rem;
           margin-left: 1.4rem;
-          
+
           &:first-child {
             margin-top: 2rem;
           }
-        }  
-        
+        }
+
         & > a button {
           margin-top: 1rem;
           background: var(--primary);
@@ -83,13 +87,13 @@
           order: 0;
         }
       }
-     
+
       img {
         max-width: 600px;
 
         @media (max-width: 480px) {
           width: 100%;
-        }    
+        }
       }
     }
   }

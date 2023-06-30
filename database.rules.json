@@ -1,18 +1,18 @@
 {
   "rules": {
-     "posts": {
+    "posts": {
       ".read": "true",
-       "${databaseSlug}": {
-           ".read": "true",
-         "comments": {
-           ".read": "true",
-           ".write": "auth != null",
-           "likes" : {
-              ".read": true,
-              ".write": "auth != null && (!data.exists() || data.child('authorId').val() == auth.id)",
-            }
-     			},
-       }
-     }
-	}
+      "${databaseSlug}": {
+        ".read": "true",
+        "comments": {
+          ".read": "true",
+          ".write": "auth != null",
+          "likes": {
+            ".read": true,
+            ".write": "auth != null && (!data.exists() || data.child('authorId').val() == auth.id)"
+          }
+        }
+      }
+    }
+  }
 }

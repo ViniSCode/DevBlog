@@ -3,11 +3,10 @@
   margin: 0 auto;
 
   @media (max-width: 600px) {
-    max-width: 95%;
+    max-width: 100%;
   }
 
-
-  background: #fdfdfd;
+  background: var(--box-background);
   border-radius: 8px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.123);
   padding: 24px;
@@ -17,15 +16,14 @@
   }
 
   p {
-    color: #29292e;
+    color: var(--text);
   }
 
-
   button.liked {
-    color: #459BFF;
+    color: var(--primary);
 
     svg path {
-      stroke: #459BFF;
+      stroke: var(--primary);
     }
   }
 
@@ -34,11 +32,14 @@
     justify-content: space-between;
     align-items: center;
     margin-top: 24px;
+    gap: 40;
 
     .user-info {
+      width: 100%;
+      max-width: calc(100% - 55px);
       display: flex;
       align-items: center;
-      
+
       img {
         width: 32px;
         height: 32px;
@@ -46,16 +47,14 @@
       }
 
       span {
-        margin-left: 8px;
-        color: #737380;
+        color: var(--text);
         font-size: 15px;
-
-        @media (max-width: 344px) {
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          width: 89px;
-        }
+        display: block;
+        width: 100%;
+        display: block;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
     }
 
@@ -63,16 +62,17 @@
       display: flex;
       gap: 16px;
     }
-  
+
     button {
+      width: fit-content;
       border: 0;
       background: transparent;
       cursor: pointer;
 
       &.like-button {
         display: flex;
-        align-items: flex-end;
-        color: #737380;
+        align-items: center;
+        color: var(--text);
         gap: 8px;
         transition: filter 0.2s;
 
@@ -80,11 +80,17 @@
           filter: brightness(0.8);
         }
 
+        .likeIcon {
+          width: 24px; // Adjust the width to your desired size
+          height: 24px;
+          display: block;
+        }
+
         &.liked {
-          color: #459BFF;
+          color: var(--primary);
 
           svg path {
-            stroke: #459BFF;
+            stroke: var(--primary);
           }
         }
       }

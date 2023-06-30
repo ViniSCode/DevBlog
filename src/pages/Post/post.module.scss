@@ -1,10 +1,12 @@
 .container {
   padding: 0 2rem;
-  max-width: 1120px;
+  max-width: 1280px;
   margin: 0 auto;
 
-  @media (max-width: 386px) {
-    padding: 0 0.2rem;
+  @media (max-width: 320px) {
+    article > img {
+      border-radius: 20px;
+    }
   }
 
   .comments {
@@ -15,35 +17,43 @@
 .post {
   max-width: 80%;
   margin: 5rem auto 0;
-  
+
   @media (max-width: 600px) {
-    max-width: 95%;
+    max-width: 100%;
     margin: 2rem auto 0;
   }
 
- > img {
-    margin-top: 1rem;
+  > img {
+    margin-top: 2rem;
     max-width: 100%;
-    border-radius: 5px;
+    border-radius: 1.875rem;
   }
 
   h1 {
-    font-size: 3.5rem;
-    font-weight: 900;
+    font-size: 2.5rem;
+    font-weight: bold;
+    max-width: 90%;
+    color: var(--title);
 
-    @media (max-width: 600px) {
-      font-size: 3rem;
-    }  
-
-    @media (max-width: 386px) {
+    @media (max-width: 940px) {
+      max-width: 100%;
       font-size: 2.3rem;
-    }  
+    }
+
+    @media (max-width: 440px) {
+      max-width: 100%;
+      font-size: 2rem;
+    }
+
+    @media (max-width: 320px) {
+      font-size: 1.5rem;
+    }
   }
 
   time {
     display: block;
     font-size: 1rem;
-    color: var(--post-text);
+    color: var(--text);
     margin-top: 1.5rem;
   }
 
@@ -53,8 +63,16 @@
     font-size: 1.125rem;
     color: var(--post-text);
 
-    p, ul {
+    p,
+    ul {
       margin: 1.5rem 0;
+      font-weight: normal;
+
+      @media (max-width: 440px) {
+        max-width: 100%;
+        font-size: 0.875rem;
+        line-height: 1.7;
+      }
     }
 
     ul {
@@ -65,22 +83,20 @@
       }
     }
   }
-  
 }
 
 form {
-  max-width: 85%;
-  padding: 0 2rem;
+  max-width: 80%;
   margin: 5rem auto;
 
   @media (max-width: 600px) {
-    max-width: 95%;
+    max-width: 100%;
     padding: 0rem;
   }
 
   button[type="submit"] {
-    color: white;
-    background-color: var(--primary);
+    color: black;
+    background-color: var(--title);
     border-radius: 8px;
     padding: 1rem 3rem;
 
@@ -89,12 +105,12 @@ form {
     }
   }
 
-  textarea{
+  textarea {
     width: 100%;
     border: 0;
     padding: 16px;
     border-radius: 8px;
-    background: #fdfdfd;
+    background: var(--box-background);
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.123);
     resize: vertical;
     min-height: 120px;
@@ -105,53 +121,41 @@ form {
     align-items: center;
     justify-content: space-between;
     margin-top: 16px;
+  }
 
-    .userInfo {
+  .userInfo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+
+    > div {
+      max-width: calc(100% - 135px);
       display: flex;
       align-items: center;
-      
+      width: 100%;
+
       > img {
-        width: 32px;
-        height: 32px;
-        border-radius: 50%;
+        margin-right: 8px;
+        width: 30px;
+        height: 30px;
+        border-radius: 100vw;
       }
 
-      span {
-        margin-left: 8px;
-        color: #29292e;
-        font-weight: 500;
-        font-size: 15px;
-
-        @media (max-width: 344px) {
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          width: 89px;
-        }
+      > span {
+        display: block;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
     }
-    
-    > span {
-      font-size: 14px;
-      color: #737380;
-      font-weight: 500;
 
-      @media (max-width: 344px) {
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          width: 89px;
-      }
-
-      button {
-        background: transparent;
-        border: 0;
-        color: #835AFD;
-        text-decoration: underline;
-        font-size: 14px;
-        font-weight: 500;
-        cursor: pointer;
-      }
+    button {
+      flex-shrink: 0; // Prevent the button from pushing the span
+      padding: 1rem 2rem;
     }
   }
 }
