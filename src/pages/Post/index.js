@@ -105,11 +105,14 @@ export function Post() {
                   </div>
                 ) : (
                   <div>
-                    Para enviar uma pergunta,{" "}
-                    <button type="button" onClick={handleSignInWithGoogle}>
-                      faça seu login
-                    </button>
-                    .
+                    To leave a comment, please{" "}
+                    <span
+                      type="button"
+                      onClick={handleSignInWithGoogle}
+                      style={{ color: "var(--primary)", cursor: "pointer" }}
+                    >
+                      log in.
+                    </span>
                   </div>
                 )}
               </div>

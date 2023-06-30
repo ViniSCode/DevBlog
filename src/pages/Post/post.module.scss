@@ -121,6 +121,11 @@ form {
     align-items: center;
     justify-content: space-between;
     margin-top: 16px;
+
+    span.loginBeforeComment {
+      display: block;
+      color: var(--primary);
+    }
   }
 
   .userInfo {
