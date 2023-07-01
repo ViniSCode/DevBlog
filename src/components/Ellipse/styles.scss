@@ -4,8 +4,28 @@
   align-items: center;
   justify-content: center;
 
+  .ellipse {
+    width: 63vw;
+
+    @media (min-width: 698px) {
+      width: 80vw;
+    }
+
+    @media (min-width: 1024px) {
+      width: 90vw;
+    }
+  }
+
   .logo-ellipse {
-    width: 100%;
+    width: 63vw;
     position: absolute;
+
+    @media (min-width: 698px) {
+      width: 80vw;
+    }
+
+    @media (min-width: 1024px) {
+      width: 90vw;
+    }
   }
 }

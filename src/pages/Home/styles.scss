@@ -1,7 +1,15 @@
 .home {
-  max-width: 1280px;
+  max-width: 490px;
   margin: 0 auto;
   padding: 0 2rem;
+
+  @media (min-width: 698px) {
+    max-width: 850px;
+  }
+
+  @media (min-width: 1024px) {
+    max-width: 1024px;
+  }
 
   .ellipse-container {
     width: 100%;
@@ -9,91 +17,195 @@
   }
 
   .hero {
-    height: calc(100vh - 7rem);
+    height: initial;
+    margin-top: 10rem;
     display: flex;
     align-items: center;
     justify-content: center;
 
-    @media (max-width: 891px) {
-      height: initial;
-      margin-top: 10rem;
+    @media (min-width: 891px) {
+      height: calc(100vh - 7rem);
+      margin-top: 0;
     }
 
     .main-container {
       display: flex;
       align-items: center;
+      flex-direction: column;
       justify-content: space-between;
       gap: 4rem;
 
-      @media (max-width: 891px) {
-        flex-direction: column;
+      @media (min-width: 891px) {
+        flex-direction: row;
       }
+    }
+  }
 
-      .home-text {
-        @media (max-width: 331px) {
-          display: flex;
-          align-items: center;
-          justify-content: center;
+  section {
+    margin-top: 15.9375rem;
 
-          h1 {
-            text-align: center;
+    &:last-child {
+      margin-bottom: 20rem;
+    }
+  }
+
+  section.benefits {
+    display: flex;
+    flex-direction: column;
+    gap: 3.75rem;
+
+    div.benefits-card {
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+
+      div.text-container {
+        order: 1;
+
+        max-width: 100%;
+
+        h3 {
+          font-size: 1.625rem;
+          font-family: "Syne", sans-serif;
+        }
+
+        p {
+          font-size: 0.875rem;
+          margin-top: 1.5rem;
+          font-weight: 500;
+        }
+
+        @media (min-width: 320px) {
+          h3 {
+            font-size: 2rem;
+          }
+
+          p {
+            font-size: 1rem;
+            margin-top: 2.25rem;
           }
         }
 
-        h1 {
-          font-size: 4.5rem;
-          line-height: 4.5rem;
-          font-weight: bold;
-          margin-top: 2.5rem;
-
-          @media (max-width: 1014px) {
-            font-size: 3.4rem;
+        @media (min-width: 400px) {
+          h3 {
+            font-size: 2.3rem;
           }
 
-          @media (max-width: 891px) {
-            font-size: 4.5rem;
-          }
-
-          @media (max-width: 480px) {
-            font-size: 3.5rem;
-          }
-
-          @media (max-width: 364px) {
-            font-size: 3.2rem;
-            word-spacing: -2px;
+          p {
+            font-size: 1rem;
           }
         }
 
-        ul li {
-          list-style-type: circle;
-          font-size: 1.5rem;
-          line-height: 2.25rem;
-          margin-top: 0.2rem;
-          margin-left: 1.4rem;
+        @media (min-width: 465px) {
+          h3 {
+            font-size: 2.5rem;
+          }
+        }
 
-          &:first-child {
+        @media (min-width: 698px) {
+          &.inverted {
+            order: 0;
+          }
+
+          h3 {
+            font-size: 1.975rem;
+          }
+
+          p {
+            margin-top: 1.25rem;
+          }
+        }
+
+        @media (min-width: 1024px) {
+          max-width: 460px;
+
+          h3 {
+            font-size: 2.785rem;
+          }
+
+          p {
             margin-top: 2rem;
+            font-size: 1.25rem;
           }
-        }
-
-        & > a button {
-          margin-top: 1rem;
-          background: var(--primary);
-          color: white;
-        }
-
-        @media (max-width: 891px) {
-          flex-direction: column;
-          order: 0;
         }
       }
 
-      img {
-        max-width: 600px;
+      @media (min-width: 698px) {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 2.875rem;
+      }
 
-        @media (max-width: 480px) {
+      div.img-container {
+        width: 100%;
+
+        @media (min-width: 698px) {
+          max-width: 374px;
+        }
+
+        @media (min-width: 1024px) {
+          max-width: 400px;
+        }
+
+        img.img {
           width: 100%;
         }
+      }
+    }
+
+    @media (min-width: 698px) {
+      gap: 2rem;
+    }
+  }
+
+  section.popular-news {
+    > h2.popular-news-title {
+      font-size: 1.75rem;
+      text-align: center;
+    }
+
+    > p.popular-news-description {
+      color: var(--primary);
+      font-weight: 500;
+      font-size: 0.875rem;
+      text-align: center;
+      margin-top: 1.25rem;
+      max-width: 650px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    @media (min-width: 400px) {
+      > h1.popular-news-title {
+        font-size: 2.0625rem;
+      }
+
+      > p.popular-news-description {
+        font-size: 1rem;
+      }
+    }
+
+    @media (min-width: 698px) {
+      > h2.popular-news-title {
+        font-size: 2.0625rem;
+      }
+
+      > p.popular-news-description {
+        margin-top: 1rem;
+        max-width: 400px;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      > h2.popular-news-title {
+        font-size: 3rem;
+      }
+
+      > p.popular-news-description {
+        font-size: 1.125rem;
+        margin-top: 1.5rem;
+        max-width: 500px;
       }
     }
   }

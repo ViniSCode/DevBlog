@@ -33,17 +33,10 @@
 
 html {
   overflow-y: scroll;
+  font-size: 87.5%;
 
-  @media (max-width: 1080px) {
-    font-size: 93.75%;
-  }
-
-  @media (max-width: 720px) {
-    font-size: 87.5%;
-  }
-
-  @media (max-width: 500px) {
-    font-size: 81.25%;
+  @media (min-width: 768px) {
+    font-size: 93.75;
   }
 }
 

@@ -1,30 +1,32 @@
 .header {
-  max-width: 1280px;
+  max-width: 490px;
   user-select: none;
   margin: 0 auto;
   padding: 0.625rem 2rem;
+
+  @media (min-width: 698px) {
+    max-width: 850px;
+  }
+
+  @media (min-width: 1024px) {
+    max-width: 1024px;
+  }
 
   .userContainer {
     cursor: pointer;
     display: flex;
     align-items: center;
     gap: 15px;
-
-    // @media (max-width: 390px) {
-    //   > .username {
-    //     display: none;
-    //   }
-    // }
   }
 
   .userImage {
-    width: 40px;
-    height: 40px;
     border-radius: 10rem;
+    width: 30px;
+    height: 30px;
 
-    @media (max-width: 390px) {
-      width: 30px;
-      height: 30px;
+    @media (min-width: 390px) {
+      width: 40px;
+      height: 40px;
     }
   }
 
@@ -85,10 +87,6 @@
           bottom: 15px;
           left: 0;
           background: var(--primary);
-
-          @media (max-width: 664px) {
-            background: var(--primary);
-          }
         }
       }
 

@@ -33,8 +33,6 @@ export function Ellipse() {
   return (
     <div className="ellipse-container">
       <motion.svg
-        width="1011"
-        height="221"
         viewBox="0 0 1011 221"
         style={{ maxWidth: "1000px" }}
         variants={title}
@@ -54,7 +52,7 @@ export function Ellipse() {
         />
       </motion.svg>
       <motion.svg
-        width={"80vw"}
+        className="ellipse"
         viewBox="0 0 1205 774"
         style={{ maxWidth: "1000px" }}
       >
