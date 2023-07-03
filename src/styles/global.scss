@@ -90,11 +90,6 @@ footer.footer {
 
     .icon-link {
       display: block;
-      transition: filter 0.2s;
-
-      &:hover {
-        filter: brightness(0.8);
-      }
 
       > img {
         user-select: none;

@@ -13,7 +13,7 @@ export function Footer() {
           rel="noreferrer"
           target="_blank"
         >
-          <img src={linkedin} alt="linkedin" className="linkedin" />
+          <img src={linkedin} alt="linkedin" className="linkedin icons" />
         </a>
         <a
           href="https://github.com/viniscode"
@@ -21,7 +21,7 @@ export function Footer() {
           rel="noreferrer"
           target="_blank"
         >
-          <img src={github} alt="github" className="github" />
+          <img src={github} alt="github" className="github icons" />
         </a>
         <a
           href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=viniciuskauarodriguesdev@gmail.com"
@@ -29,7 +29,7 @@ export function Footer() {
           target="_blank"
           className="icon-link"
         >
-          <img src={mail} alt="e-mail" className="mail" />
+          <img src={mail} alt="e-mail" className="mail icons" />
         </a>
       </div>
     </footer>
