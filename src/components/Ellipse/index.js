@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import "./styles.scss";
-const draw = {
+export const drawVariant = {
   hidden: { pathLength: 0, opacity: 0 },
   visible: (i) => {
     const delay = 0.3 + i * 0.3;
@@ -16,7 +16,7 @@ const draw = {
   },
 };
 
-const title = {
+export const titleVariant = {
   hidden: { opacity: 0, fillOpacity: 0 },
   visible: (i) => {
     return {
@@ -35,7 +35,7 @@ export function Ellipse() {
       <motion.svg
         viewBox="0 0 1011 221"
         style={{ maxWidth: "1000px" }}
-        variants={title}
+        variants={titleVariant}
         initial="hidden"
         animate="visible"
         className="logo-ellipse"
@@ -63,7 +63,7 @@ export function Ellipse() {
           fill="none"
           initial="hidden"
           animate="visible"
-          variants={draw}
+          variants={drawVariant}
           custom={1}
         />
         <motion.path
@@ -73,7 +73,7 @@ export function Ellipse() {
           fill="none"
           initial="hidden"
           animate="visible"
-          variants={draw}
+          variants={drawVariant}
           custom={1.5}
         />
         <motion.path
@@ -83,7 +83,7 @@ export function Ellipse() {
           fill="none"
           initial="hidden"
           animate="visible"
-          variants={draw}
+          variants={drawVariant}
           custom={2}
         />
       </motion.svg>
