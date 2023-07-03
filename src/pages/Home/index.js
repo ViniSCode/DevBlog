@@ -6,6 +6,16 @@ import { Ellipse } from "../../components/Ellipse";
 import { GetInTouchSection } from "../../components/GetInTouchSection";
 import { LastNewsSection } from "../../components/LastNewsSection";
 import "./styles.scss";
+
+export const inViewFadeIn = {
+  transition: { duration: 0.5, ease: "easeInOut", delay: 0.2 },
+  opacity: 1,
+};
+export const inViewFadeOut = {
+  transition: { duration: 0.3, ease: "easeInOut" },
+  opacity: 0,
+};
+
 export function Home() {
   const { ref: section1Ref, inView: section1View } = useInView({
     triggerOnce: true,
@@ -16,15 +26,6 @@ export function Home() {
   const { ref: section3Ref, inView: section3View } = useInView({
     triggerOnce: true,
   });
-
-  const inViewFadeIn = {
-    transition: { duration: 0.5, ease: "easeInOut", delay: 0.2 },
-    opacity: 1,
-  };
-  const inViewFadeOut = {
-    transition: { duration: 0.3, ease: "easeInOut" },
-    opacity: 0,
-  };
 
   const opacitySection1 = useAnimation();
   const opacitySection2 = useAnimation();
