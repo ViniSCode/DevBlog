@@ -25,7 +25,7 @@ export function Header() {
                 referrerPolicy="no-referrer"
                 className="userImage"
               />
-              <span className="username">Logout</span>
+              <span className="logout">Logout</span>
             </div>
           ) : (
             <button onClick={handleSignInWithGoogle} className="loginBtn">

@@ -159,10 +159,14 @@ form {
       }
 
       > span {
-        display: block;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+        display: none;
+
+        @media (min-width: 300px) {
+          display: block;
+        }
       }
     }
 

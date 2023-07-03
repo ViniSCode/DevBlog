@@ -23,6 +23,11 @@
     border-radius: 10rem;
     width: 30px;
     height: 30px;
+    display: none;
+
+    @media (min-width: 300px) {
+      display: block;
+    }
 
     @media (min-width: 390px) {
       width: 40px;
@@ -35,11 +40,16 @@
     color: var(--title);
   }
 
-  .username {
+  .logout {
     color: var(--title);
     border: none;
-    display: flex;
+    display: block;
     align-items: center;
+    transition: color 0.2s;
+
+    &:hover {
+      color: var(--primary);
+    }
   }
 
   .loginBtn {
