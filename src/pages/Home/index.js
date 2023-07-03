@@ -1,6 +1,8 @@
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
 import { RichText } from "prismic-dom";
 import { useEffect, useState } from "react";
+import { useInView } from "react-intersection-observer";
+import { Link } from "react-router-dom";
 import kid from "../../assets/images/kid.png";
 import speaker from "../../assets/images/speaker.png";
 import { Ellipse, drawVariant } from "../../components/Ellipse";
@@ -9,6 +11,41 @@ import "./styles.scss";
 
 export function Home() {
   const [lastPosts, setLastPosts] = useState([]);
+
+  const { ref: section1Ref, inView: section1View } = useInView({
+    triggerOnce: true,
+  });
+  const { ref: section2Ref, inView: section2View } = useInView({
+    triggerOnce: true,
+  });
+  const { ref: section3Ref, inView: section3View } = useInView({
+    triggerOnce: true,
+  });
+
+  const inViewFadeIn = {
+    transition: { duration: 0.5, ease: "easeInOut", delay: 0.2 },
+    opacity: 1,
+  };
+  const inViewFadeOut = {
+    transition: { duration: 0.3, ease: "easeInOut" },
+    opacity: 0,
+  };
+
+  const opacitySection1 = useAnimation();
+  const opacitySection2 = useAnimation();
+  const opacitySection3 = useAnimation();
+
+  useEffect(() => {
+    if (section1View) {
+      opacitySection1.start(inViewFadeIn);
+    }
+    if (section2View) {
+      opacitySection2.start(inViewFadeIn);
+    }
+    if (section3View) {
+      opacitySection3.start(inViewFadeIn);
+    }
+  }, [section1View, section2View, section3View]);
 
   useEffect(() => {
     const getPostsFromPrismic = async () => {
@@ -26,13 +63,14 @@ export function Home() {
       const formattedPosts = response.results.map((post) => {
         return {
           slug: post.uid,
+          writer: post.data.writer[0].text,
           title: RichText.asText(post.data.title),
           image: post.data?.image?.url,
           text:
             post.data.content
               .find((content) => content.type === "paragraph")
               ?.text.slice(0, 70) + "..." ?? "",
-          updatedAt: new Date(post.last_publication_date).toLocaleDateString(
+          date: new Date(post.first_publication_date).toLocaleDateString(
             "pt-BR",
             {
               day: "2-digit",
@@ -60,7 +98,12 @@ export function Home() {
           </div>
         </div>
 
-        <section className="benefits">
+        <motion.section
+          initial={inViewFadeOut}
+          animate={opacitySection1}
+          className="benefits"
+          ref={section1Ref}
+        >
           <div className="benefits-card">
             <div className="text-container inverted">
               <h3>Your Source for Breaking Tech News</h3>
@@ -86,9 +129,14 @@ export function Home() {
               <img src={kid} alt=" kid with VR Glasses" className="img" />
             </div>
           </div>
-        </section>
+        </motion.section>
 
-        <section className="last-news">
+        <motion.section
+          initial={inViewFadeOut}
+          animate={opacitySection2}
+          className="last-news"
+          ref={section2Ref}
+        >
           <h2 className="title">Last News</h2>
           <p className="description yellow">
             Stay Informed, Fascinated, and Entertained with the World of
@@ -97,20 +145,29 @@ export function Home() {
 
           <div className="last-news-card-container">
             {lastPosts.map((post) => (
-              <div className="last-news-card" key={post.slug}>
+              <Link
+                to={`posts/${post.slug}`}
+                className="last-news-card"
+                key={post.slug}
+              >
                 <div className="post-image">
                   <img src={post.image} alt="post image" />
                 </div>
                 <div className="post-text">
-                  <h4>AI Evolution</h4>
+                  <h4>{post.writer}</h4>
                   <p>{post.text}</p>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
-        </section>
+        </motion.section>
 
-        <section className="contact">
+        <motion.section
+          initial={inViewFadeOut}
+          animate={opacitySection3}
+          className="contact"
+          ref={section3Ref}
+        >
           <motion.svg
             viewBox="0 0 612 603"
             fill="none"
@@ -122,7 +179,8 @@ export function Home() {
               strokeWidth="1.48936"
               variants={drawVariant}
               initial="hidden"
-              animate="visible"
+              animate={section3View ? "visible" : ""}
+              custom={2}
             />
           </motion.svg>
 
@@ -136,7 +194,7 @@ export function Home() {
             </div>
             <button className="get-in-touch-btn">Contact</button>
           </div>
-        </section>
+        </motion.section>
       </main>
     </div>
   );

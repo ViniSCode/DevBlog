@@ -34,7 +34,6 @@ export function Ellipse() {
     <div className="ellipse-container">
       <motion.svg
         viewBox="0 0 1011 221"
-        style={{ maxWidth: "1000px" }}
         variants={titleVariant}
         initial="hidden"
         animate="visible"

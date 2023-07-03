@@ -28,7 +28,7 @@ export function Post() {
         image: response.data?.image.url,
         title: RichText.asText(response.data.title),
         content: RichText.asHtml(response.data.content),
-        updatedAt: new Date(response.last_publication_date).toLocaleDateString(
+        date: new Date(response.first_publication_date).toLocaleDateString(
           "pt-BR",
           {
             day: "2-digit",
@@ -75,7 +75,7 @@ export function Post() {
         <>
           <article className={styles.post}>
             <h1 className={styles.postTitle}>{post.title}</h1>
-            <time>{post.updatedAt}</time>
+            <time>{post.date}</time>
             {post.image && (
               <img src={post.image} alt="" className="postImage" />
             )}
