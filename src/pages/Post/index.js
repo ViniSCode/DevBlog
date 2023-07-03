@@ -42,7 +42,7 @@ export function Post() {
     };
 
     getPostsFromPrismic();
-  }, []);
+  }, [slug]);
 
   async function handleSendComment(event) {
     event.preventDefault();
