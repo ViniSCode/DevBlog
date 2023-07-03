@@ -1,7 +1,15 @@
 .container {
   padding: 0 2rem;
-  max-width: 1280px;
+  max-width: 490px;
   margin: 0 auto;
+
+  @media (min-width: 698px) {
+    max-width: 850px;
+  }
+
+  @media (min-width: 1024px) {
+    max-width: 1024px;
+  }
 
   @media (max-width: 320px) {
     article > img {
@@ -15,7 +23,7 @@
 }
 
 .post {
-  max-width: 80%;
+  max-width: 90%;
   margin: 5rem auto 0;
 
   @media (max-width: 600px) {
@@ -86,7 +94,7 @@
 }
 
 form {
-  max-width: 80%;
+  max-width: 90%;
   margin: 5rem auto;
 
   @media (max-width: 600px) {
