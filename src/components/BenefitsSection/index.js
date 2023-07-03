@@ -9,12 +9,7 @@ export function BenefitsSection({
   section1Ref,
 }) {
   return (
-    <motion.section
-      initial={inViewFadeOut}
-      animate={opacitySection1}
-      className="benefits"
-      ref={section1Ref}
-    >
+    <>
       <div className="benefits-card">
         <div className="text-container inverted">
           <h3>Your Source for Breaking Tech News</h3>
@@ -40,6 +35,6 @@ export function BenefitsSection({
           <img src={kid} alt=" kid with VR Glasses" className="img" />
         </div>
       </div>
-    </motion.section>
+    </>
   );
 }
