@@ -1,16 +1,12 @@
 import { motion, useAnimation } from "framer-motion";
-import { RichText } from "prismic-dom";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import { BenefitsSection } from "../../components/BenefitsSection";
 import { Ellipse } from "../../components/Ellipse";
 import { GetInTouchSection } from "../../components/GetInTouchSection";
 import { LastNewsSection } from "../../components/LastNewsSection";
-import { getPrismicClient } from "../../services/prismic";
 import "./styles.scss";
 export function Home() {
-  const [lastPosts, setLastPosts] = useState([]);
-
   const { ref: section1Ref, inView: section1View } = useInView({
     triggerOnce: true,
   });
@@ -45,46 +41,6 @@ export function Home() {
       opacitySection3.start(inViewFadeIn);
     }
   }, [section1View, section2View, section3View]);
-
-  useEffect(() => {
-    const getPostsFromPrismic = async () => {
-      const client = getPrismicClient();
-
-      const response = await client.getByType("post", {
-        fetch: ["Post.title", "Post.content"],
-        pageSize: 6,
-        orderings: {
-          field: "document.first_publication_date",
-          direction: "desc",
-        },
-      });
-
-      const formattedPosts = response.results.map((post) => {
-        return {
-          slug: post.uid,
-          writer: post.data.writer[0].text,
-          title: RichText.asText(post.data.title),
-          image: post.data?.image?.url,
-          text:
-            post.data.content
-              .find((content) => content.type === "paragraph")
-              ?.text.slice(0, 70) + "..." ?? "",
-          date: new Date(post.first_publication_date).toLocaleDateString(
-            "pt-BR",
-            {
-              day: "2-digit",
-              month: "long",
-              year: "numeric",
-            }
-          ),
-        };
-      });
-
-      setLastPosts(formattedPosts);
-    };
-
-    getPostsFromPrismic();
-  }, []);
 
   return (
     <div className="home">
