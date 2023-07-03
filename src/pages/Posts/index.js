@@ -1,4 +1,3 @@
-import * as prismic from "@prismicio/client";
 import { RichText } from "prismic-dom";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -13,13 +12,14 @@ export function Posts() {
     const getPostsFromPrismic = async () => {
       const client = getPrismicClient();
 
-      const response = await client.get(
-        [prismic.predicate.at("document.type", "post")],
-        {
-          fetch: ["Post.title", "Post.content"],
-          pageSize: 5,
-        }
-      );
+      const response = await client.getByType("post", {
+        fetch: ["Post.title", "Post.content"],
+        limit: 5,
+        orderings: {
+          field: "document.first_publication_date",
+          direction: "desc",
+        },
+      });
 
       const formattedPosts = response.results.map((post) => {
         return {
