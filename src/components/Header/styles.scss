@@ -3,6 +3,8 @@
   user-select: none;
   margin: 0 auto;
   padding: 0.625rem 2rem;
+  position: relative;
+  z-index: 100;
 
   @media (min-width: 698px) {
     max-width: 850px;
