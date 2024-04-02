@@ -13,7 +13,7 @@ DevBlog is a dynamic website created using React.js, Prismic (CMS for post manag
 - **Sass:** Utilized for styling the website, allowing for modular and maintainable CSS code.
 
 ## Access the website:
-   Open your browser and navigate to `[DevBlog](https://devblog-fe7e4.web.app/)`.
+   Open your browser and navigate to [DevBlog](https://devblog-fe7e4.web.app/)
 
 ## Home
 ![devblog-home-preview.png](https://github.com/ViniSCode/DevBlog/blob/main/src/assets/images/devblog-home-preview.png?raw=true)
