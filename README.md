@@ -1,41 +1,25 @@
-# DEVBLOG
 
-### First App using ReactJS
-### Creating something new is the best way to learn
+# DevBlog
+![enter image description here](https://github.com/ViniSCode/DevBlog/blob/main/src/assets/images/devblog-preview.png?raw=true)
 
-## Technologies 
-- [x] ReactJS
-- [x] Firebase, Firebase Auth, Real Time Database
-- [x] Prismic CMS
-- [x] react-paginate
-- [x] react-toastify
-- [x] Sass
+DevBlog is a dynamic website created using React.js, Prismic (CMS for post management), Firebase for comments (liking and posting comments on posts), Framer Motion for animations and transitions, and styled with Sass.
 
-## ToDo
-- [x] "Home" Page
-- [x] "Posts" Page
-- [x] "Admin" Page at Prismic
-- [x] "Create Post" Page
-- [x] "Post" page (Read Post)
-- [x] useAuth hook, Auth Context
-- [x] Firebase, Prismic CMS
-- [x] Comments Component
-- [x] Header Component
-- [x] Button Component
-- [x] Loading (Spinner) component 
+## Features
 
-## Regras de negócio
+- **React.js:** Utilized for building the frontend of the website, providing a fast and interactive user experience.
+- **Prismic:** Integrated as the CMS for efficient management of blog posts, allowing easy content creation and updates.
+- **Firebase:** Implemented for handling user interactions such as liking posts and commenting, providing real-time functionality.
+- **Framer Motion:** Employed to add fluid animations and smooth transitions, enhancing the overall user interface.
+- **Sass:** Utilized for styling the website, allowing for modular and maintainable CSS code.
 
-### user
-- [x] User can login with google
-- [x] User can read posts
-- [x] User can comment on posts
-- [x] User can like any post
-- [x] User can't delete comments
-- [x] User can't interact with posts (like, comment) if logged out
+## Access the website:
+   Open your browser and navigate to `[DevBlog](https://devblog-fe7e4.web.app/)`.
 
-### Admin
-- [x] Admin can create posts
-- [x] Admin can edit posts
-- [x] Admin can delete posts
-- [x] Admin create posts at prismic.io CMS
+## Home
+![devblog-home-preview.png](https://github.com/ViniSCode/DevBlog/blob/main/src/assets/images/devblog-home-preview.png?raw=true)
+
+## Posts
+![devblog-posts-preview.png](https://github.com/ViniSCode/DevBlog/blob/main/src/assets/images/devblog-posts-preview.png?raw=true)
+
+# Post
+![devblog-post-preview.png](https://github.com/ViniSCode/DevBlog/blob/main/src/assets/images/devblog-post-preview.png?raw=true)
